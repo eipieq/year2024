@@ -3,6 +3,9 @@ from datetime import datetime, timedelta
 def calculate_percentage_and_hours_of_year_passed(target_year=2024):
     current_datetime = datetime.now()
 
+    # Print the current time of checking
+    print(f"Current time: {current_datetime.strftime('%d/%m/%Y, %A, %H:%M:%S')}")
+
     # Calculate the total number of 30-minute intervals in a standard and leap year
     standard_year_intervals = 365 * 24 * 2
     leap_year_intervals = 366 * 24 * 2
@@ -26,9 +29,13 @@ def calculate_percentage_and_hours_of_year_passed(target_year=2024):
     # Calculate the number of hours passed
     hours_passed = seconds_passed / 3600
 
-    return percentage_passed, hours_passed
+    # Calculate the number of hours left
+    hours_left = (total_intervals_in_year / 2) - hours_passed
+
+    return percentage_passed, hours_passed, hours_left
 
 # Example usage
-percentage_passed, hours_passed = calculate_percentage_and_hours_of_year_passed()
+percentage_passed, hours_passed, hours_left = calculate_percentage_and_hours_of_year_passed()
 print(f"Number of hours passed in 2024: \033[1m{hours_passed:.2f}\033[0m")
+#print(f"Number of hours left in 2024: \033[1m{hours_left:.2f}\033[0m")
 print(f"Percentage of the year passed in 2024: \033[1m{percentage_passed:.2f}%\033[0m")
